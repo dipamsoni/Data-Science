@@ -63,15 +63,15 @@ Week 4 : Machine Learning
 		
 	2. Unsupervised Learning
 		1. Association Rule
-			- Apriori
-			- Eclat
+			1. Apriori
+			2. Eclat
 			
 		2. Clustering
-			- K-Means Clustering
-			- Hierarchical Clustering
-			- Density Based Clustering
+			1. K-Means Clustering
+			2. Hierarchical Clustering
+			3. Density Based Clustering
 			
 		3. Dimensionality Reduction
-			- PCA
-			- LDA
-			- Kernel PCA
+			1. PCA
+			2. LDA
+			3. Kernel PCA

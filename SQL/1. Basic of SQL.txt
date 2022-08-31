@@ -1,0 +1,111 @@
+1. SELECT : 
+SELECT column1, column2, ... FROM table_name;
+
+2. INSERT :
+INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);
+
+3. UPDATE :
+UPDATE customers SET city = 'NYC' WHERE customerNumber = 157;
+
+4. DELETE :
+DELETE FROM customers WHERE customerName = 'Cardinal';
+
+5. LIKE OPERATOR :
+SELECT * FROM customers WHERE customerName LIKE 'a%';
+'a%'----Finds any values that start with "a"
+'%a'----Finds any values that end with "a"
+'%or%'--Finds any values that have "or" in any position
+'_r%'---Finds any values that have "r" in the second position
+'a_%'---Finds any values that start with "a" and are at least 2 characters in length
+'a__%'--Finds any values that start with "a" and are at least 3 characters in length
+'a%o'---Finds any values that start with "a" and ends with "o" 
+
+6. IN Operator (NOT IN) : 
+SELECT * FROM customers WHERE city IN ('Las Vegas','NYC','Boston');
+
+7. BETWEEN Operator (NOT BETWEEN) :
+SELECT * FROM payments WHERE amount BETWEEN 1000 AND 5000;
+SELECT * FROM customers WHERE customerName BETWEEN 'Atelier graphique' AND 'Signal Gift Stores';
+
+8. ALIAS :
+SELECT o.orderNumber, o.orderDate, c.customerName FROM customers AS c, orders AS o WHERE c.state = 'NY' AND c.customerNumber = o.customerNumber;
+SELECT o.orderNumber,c.customerName,od.quantityOrdered,p.productName FROM customers AS c, orders AS o, orderdetails AS od, products AS p WHERE c.customerNumber = o.customerNumber AND o.orderNumber = od.orderNumber AND od.productCode = p.productCode;
+
+9. UNION Operator : The UNION operator is used to combine the result-set of two or more SELECT statements.
+SELECT city, country FROM customers WHERE country='USA' UNION SELECT city, country FROM offices WHERE country='USA' ORDER BY city;
+
+10. The SQL GROUP BY Statement :
+SELECT COUNT(customerNumber), country FROM customers GROUP BY country;
+
+11. The SQL HAVING Clause :
+SELECT COUNT(customerNumber), country FROM customers GROUP BY country HAVING COUNT(customerNumber) < 10;
+
+12. JOINS :
+12.1. INNER JOIN : The INNER JOIN keyword selects records that have matching values in both tables.
+SELECT orders.orderNumber, orders.status, orderdetails.productCode
+FROM orders
+INNER JOIN orderdetails ON orders.orderNumber=orderdetails.orderNumber;
+
+12.2. LEFT JOIN : The LEFT JOIN keyword returns all records from the left table (table1), and the matching records from the right table (table2). The result is 0 records from the right side, if there is no match.
+SELECT orders.orderNumber, orders.status, payments.amount
+FROM orders
+LEFT JOIN payments ON orders.customerNumber = payments.customerNumber
+ORDER BY orders.orderNumber;
+
+12.3. RIGHT JOIN : The RIGHT JOIN keyword returns all records from the right table (table2), and the matching records from the left table (table1). The result is 0 records from the left side, if there is no match.
+SELECT orders.orderNumber, orders.status, payments.amount
+FROM orders
+RIGHT JOIN payments ON orders.customerNumber = payments.customerNumber
+ORDER BY orders.orderNumber;
+
+12.4. FULL OUTER JOIN : The FULL OUTER JOIN keyword returns all records when there is a match in left (table1) or right (table2) table records.
+SELECT orders.orderNumber, orders.status, payments.amount
+FROM orders
+FULL OUTER JOIN payments ON orders.customerNumber = payments.customerNumber ORDER BY orders.orderNumber;
+
+12.5. Self Join : A self join is a regular join, but the table is joined with itself.
+SELECT c.title,s.sname,ci.cname FROM country AS c, state AS s,city AS ci WHERE c.id = s.id AND s.sid = ci.sid;
+
+13. SQL Functions : 
+	SQL functions are categorized into the following two categories:
+	1. Aggregate Functions - 
+	SUM()		SELECT SUM(amount) FROM payments;
+	COUNT()     SELECT COUNT(amount) FROM payments;
+	AVG()       SELECT AVG(amount) FROM payments;
+	MIN()       SELECT MIN(amount) FROM payments;
+	MAX()       SELECT MAX(amount) FROM payments;
+	FIRST()     SELECT FIRST(customerName) FROM customers;	 ERROR
+	LAST()      SELECT LAST(amount) FROM payments;	 ERROR
+
+	2. Scalar Functions -
+	LCASE()     SELECT LCASE(customerName) FROM customers;
+	UCASE()     SELECT UCASE(customerName) FROM customers;
+	LEN()       SELECT LENGTH(customerName) FROM customers;
+	MID() 		SELECT MID(customerName,2,3) FROM customers;
+	ROUND() 	SELECT ROUND(amount,1) FROM payments;
+	NOW() 		SELECT NOW();
+	FORMAT() 	SELECT FORMAT(123456789, “###-###-###”); 	ERROR
+
+14. SQL Dates Format :
+MySQL comes with the following data types for storing a date or a date/time value in the database:
+
+DATE - format YYYY-MM-DD
+DATETIME - format: YYYY-MM-DD HH:MI:SS
+TIMESTAMP - format: YYYY-MM-DD HH:MI:SS
+YEAR - format YYYY or YY
+SQL Server comes with the following data types for storing a date or a date/time value in the database:
+
+DATE - format YYYY-MM-DD
+DATETIME - format: YYYY-MM-DD HH:MI:SS
+SMALLDATETIME - format: YYYY-MM-DD HH:MI:SS
+TIMESTAMP - format: a unique number
+
+SELECT * FROM Orders WHERE OrderDate='2008-11-11'
+
+15. EXISTS Operator : The EXISTS operator is used to test for the existence of any record in a subquery. The EXISTS operator returns TRUE if the subquery returns one or more records.
+SELECT SupplierName
+FROM Suppliers
+WHERE EXISTS (SELECT ProductName FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price < 20);
+
+16. SQL Sub Query : 
+INSERT INTO state (sname)  (SELECT distinct state FROM customers WHERE country = 'Australia');

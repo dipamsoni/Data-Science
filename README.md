@@ -40,7 +40,7 @@ Week 3 : Python Libraries
 	2. Numpy
 	3. MatplotLib
 
-Week 4 : ML Models
+Week 4 : Machine Learning
 
 	1. Classification
 		1. K-Nearest Neighbours

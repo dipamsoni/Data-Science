@@ -42,20 +42,36 @@ Week 3 : Python Libraries
 
 Week 4 : Machine Learning
 
-	1. Classification
-		1. K-Nearest Neighbours
-		2. Naive Bayes
-		3. Decision Tree
-		4. Support Vector Machine
-		5. Logistic Regression
-		6. Random Forest
+	1. Supervised Learning
+		1. Classification
+			1. K-Nearest Neighbours
+			2. Naive Bayes
+			3. Decision Tree
+			4. Support Vector Machine
+			5. Logistic Regression
+			6. Random Forest
+
+		2. Regression
+			1. Simple Linear Regression
+				1.1 Multiple Linear Regression
+				1.2 Polynomial Regression
+			2. Support Vector Regression
+			3. Decision Tree Regression
+			5. Ensemble Method Regression
+				1. Random Forest Regression
+			6. K Nearest Neighbors Regression
 		
-	2. Regression
-		1. Simple Linear Regression
-			1.1 Multiple Linear Regression
-			1.2 Polynomial Regression
-		2. Support Vector Regression
-		3. Decision Tree Regression
-		5. Ensemble Method Regression
-			1. Random Forest Regression
-		6. K Nearest Neighbors Regression
+	2. Unsupervised Learning
+		1. Association Rule
+			- Apriori
+			- Eclat
+			
+		2. Clustering
+			- K-Means Clustering
+			- Hierarchical Clustering
+			- Density Based Clustering
+			
+		3. Dimensionality Reduction
+			- PCA
+			- LDA
+			- Kernel PCA
